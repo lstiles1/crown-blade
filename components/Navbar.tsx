@@ -96,8 +96,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className={`focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md p-1 ${scrolled || !isHome ? 'text-stone-900' : 'text-white'}`}
+              className={`focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md p-2 ${scrolled || !isHome ? 'text-stone-900 hover:bg-stone-100' : 'text-white hover:bg-white/10'} transition-colors`}
               aria-label={isOpen ? "Close main menu" : "Open main menu"}
+              aria-expanded={isOpen}
               aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
@@ -107,19 +108,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 bg-stone-900/95 backdrop-blur-xl z-40 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} id="mobile-menu">
+      {isOpen && <div className="fixed inset-0 bg-black/50 z-30 md:hidden" onClick={() => setIsOpen(false)} aria-hidden="true"></div>}
+      <div className={`md:hidden fixed inset-0 bg-stone-900/95 backdrop-blur-xl z-40 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`} id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
         <div className="flex flex-col h-full justify-center px-8 space-y-8">
             <button 
               onClick={() => setIsOpen(false)}
-              className="absolute top-8 right-8 text-stone-400 hover:text-white"
+              className="absolute top-8 right-8 text-stone-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md p-1 transition-colors"
+              aria-label="Close menu"
             >
-              <X className="h-8 w-8" />
+              <X className="h-8 w-8" aria-hidden="true" />
             </button>
-            <button onClick={() => handleNavClick('courses')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 transition-colors text-left">Courses</button>
-            <button onClick={() => handleNavClick('academy')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 transition-colors text-left">Academy</button>
-            <button onClick={() => handleNavClick('work')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 transition-colors text-left">Student Work</button>
+            <button onClick={() => handleNavClick('courses')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md px-2 py-1 transition-colors text-left">Courses</button>
+            <button onClick={() => handleNavClick('academy')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md px-2 py-1 transition-colors text-left">Academy</button>
+            <button onClick={() => handleNavClick('work')} className="text-3xl font-serif font-bold text-white hover:text-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md px-2 py-1 transition-colors text-left">Student Work</button>
             <div className="pt-8">
-              <button onClick={() => handleNavClick('home', 'book')} className="block w-full text-center bg-brand-600 text-white px-8 py-4 rounded-sm font-bold text-xl uppercase tracking-widest hover:bg-brand-500">Apply Now</button>
+              <button onClick={() => handleNavClick('home', 'book')} className="block w-full text-center bg-brand-600 text-white px-8 py-4 rounded-sm font-bold text-lg uppercase tracking-widest hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-900 transition-all">Apply Now</button>
             </div>
         </div>
       </div>

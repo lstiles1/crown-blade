@@ -39,14 +39,7 @@ const Services: React.FC<ServicesProps> = ({ services, onSelectService, onNaviga
               
               <div className="h-64 overflow-hidden relative">
                  <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-all z-10"></div>
-                 <div className="absolute top-4 right-4 z-20">
-                   {index === 1 && (
-                      <span className="bg-stone-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg uppercase tracking-wide">
-                        Best Value
-                      </span>
-                   )}
-                 </div>
-                 <img src={service.image} alt="" role="presentation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"/>
+                 <img src={service.image} alt={`${service.title} course`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"/>
               </div>
 
               <div className="p-8 flex flex-col flex-grow">
@@ -87,13 +80,13 @@ const Services: React.FC<ServicesProps> = ({ services, onSelectService, onNaviga
           ))}
         </div>
 
-        <div className="text-center">
+        <div className="text-center mt-4">
           <button 
             onClick={() => onNavigate('courses')}
-            className="inline-flex items-center text-brand-600 font-bold hover:text-brand-800 transition-colors border-b-2 border-brand-200 hover:border-brand-600 pb-1"
+            className="group inline-flex items-center gap-2 bg-stone-100 hover:bg-brand-600 text-stone-900 hover:text-white font-bold px-8 py-4 rounded-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
           >
-            View Full Curriculum Details
-            <ChevronRight className="h-4 w-4 ml-1" />
+            View Full Curriculum
+            <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </button>
         </div>
       </div>

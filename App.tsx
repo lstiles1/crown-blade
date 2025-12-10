@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import BookingForm from './components/BookingForm';
-import AiReceptionist from './components/AiReceptionist';
 import CoursesPage from './components/CoursesPage';
 import StudentWorkPage from './components/StudentWorkPage';
 import AcademyPage from './components/AcademyPage';
@@ -58,9 +57,17 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-stone-50 font-sans selection:bg-brand-200 selection:text-brand-900">
+      {/* Skip to main content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="absolute -top-12 left-0 bg-brand-600 text-white px-4 py-2 z-50 focus:top-0 transition-all rounded-br-sm font-semibold"
+      >
+        Skip to main content
+      </a>
+      
       <Navbar onNavigate={handleNavigate} currentView={currentView} />
       
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {currentView === 'home' && (
           <>
             <Hero onNavigate={handleNavigate} />
@@ -155,45 +162,42 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
-              <div className="text-2xl font-serif font-bold text-white tracking-tight mb-6">Crown & Blade</div>
+              <h2 className="text-2xl font-serif font-bold text-white tracking-tight mb-6">Crown & Blade</h2>
               <p className="text-stone-500 max-w-sm mb-6">
                 The leading destination for premium barber education. Empowering the next generation of master barbers.
               </p>
               <div className="flex gap-4">
-                 <a href="#" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors"><Instagram className="h-5 w-5" /></a>
-                 <a href="#" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors"><Youtube className="h-5 w-5" /></a>
-                 <a href="#" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors"><Facebook className="h-5 w-5" /></a>
+                 <a href="#" aria-label="Follow us on Instagram" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950"><Instagram className="h-5 w-5" aria-hidden="true" /></a>
+                 <a href="#" aria-label="Subscribe to our YouTube channel" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950"><Youtube className="h-5 w-5" aria-hidden="true" /></a>
+                 <a href="#" aria-label="Like us on Facebook" className="p-2 bg-stone-900 rounded-full hover:bg-brand-600 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950"><Facebook className="h-5 w-5" aria-hidden="true" /></a>
               </div>
             </div>
-            <div>
+            <nav aria-label="Footer navigation">
               <h4 className="text-white font-bold uppercase text-sm tracking-wider mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                <li><button onClick={() => handleNavigate('courses')} className="hover:text-brand-500 transition-colors text-left">Courses</button></li>
-                <li><button onClick={() => handleNavigate('academy')} className="hover:text-brand-500 transition-colors text-left">Academy Info</button></li>
-                <li><button onClick={() => handleNavigate('work')} className="hover:text-brand-500 transition-colors text-left">Student Work</button></li>
-                <li><button onClick={() => { handleNavigate('home'); setTimeout(() => document.getElementById('book')?.scrollIntoView(), 100);}} className="hover:text-brand-500 transition-colors text-left">Apply Now</button></li>
+              <ul className="space-y-3">
+                <li><button onClick={() => handleNavigate('courses')} className="hover:text-brand-400 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1 font-medium">Courses</button></li>
+                <li><button onClick={() => handleNavigate('academy')} className="hover:text-brand-400 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1 font-medium">Academy Info</button></li>
+                <li><button onClick={() => handleNavigate('work')} className="hover:text-brand-400 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1 font-medium">Student Work</button></li>
+                <li><button onClick={() => { handleNavigate('home'); setTimeout(() => document.getElementById('book')?.scrollIntoView(), 100);}} className="hover:text-brand-400 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1 font-medium">Apply Now</button></li>
               </ul>
-            </div>
+            </nav>
             <div>
               <h4 className="text-white font-bold uppercase text-sm tracking-wider mb-4">Visit Us</h4>
-              <div className="flex items-start gap-3 mb-2">
-                <MapPin className="h-5 w-5 text-brand-600 mt-0.5" />
+              <address className="not-italic flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-brand-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <p>123 Blade Avenue,<br/>Design District, NY 10012</p>
-              </div>
+              </address>
             </div>
           </div>
           <div className="border-t border-stone-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs">© 2024 Crown & Blade Academy. Licensed by State Board of Cosmetology.</p>
-            <div className="flex gap-6 text-xs">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
+            <p className="text-xs">© 2025 Crown & Blade Academy. Licensed by State Board of Cosmetology.</p>
+            <nav aria-label="Footer legal links" className="flex gap-6 text-xs">
+              <a href="#" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-950 rounded-md px-2 py-1">Terms of Service</a>
+            </nav>
           </div>
         </div>
       </footer>
-
-      {/* Gemini AI Widget */}
-      <AiReceptionist businessConfig={businessConfig} />
     </div>
   );
 };

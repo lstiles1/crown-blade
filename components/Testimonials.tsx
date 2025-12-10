@@ -46,8 +46,8 @@ const Testimonials: React.FC<TestimonialsProps> = ({ onNavigate }) => {
         
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {testimonials.map((t) => (
-            <div key={t.id} className="bg-stone-800 p-8 rounded-sm shadow-xl border-t-4 border-brand-500 flex flex-col hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <Quote className="h-8 w-8 text-stone-600 mb-6" />
+            <article key={t.id} className="bg-stone-800 p-8 rounded-sm shadow-xl border-t-4 border-brand-500 flex flex-col hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-500 focus-within:ring-offset-2 focus-within:ring-offset-stone-900">
+              <Quote className="h-8 w-8 text-stone-600 mb-6" aria-hidden="true" />
               <p className="text-stone-300 mb-6 italic leading-relaxed flex-grow">"{t.text}"</p>
               <div className="flex items-center pt-6 border-t border-stone-700">
                 <div className="relative shrink-0">
@@ -56,14 +56,14 @@ const Testimonials: React.FC<TestimonialsProps> = ({ onNavigate }) => {
                     alt={t.name} 
                     className="h-16 w-16 rounded-full object-cover mr-4 ring-2 ring-brand-500/50 shadow-md" 
                   />
-                  <div className="absolute bottom-0 right-4 h-3 w-3 bg-green-500 border-2 border-stone-800 rounded-full"></div>
+                  <div className="absolute bottom-0 right-4 h-3 w-3 bg-green-500 border-2 border-stone-800 rounded-full" aria-label="Status: Active"></div>
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-base">{t.name}</h4>
-                  <p className="text-brand-500 text-xs uppercase tracking-wide font-bold mt-0.5">{t.role}</p>
+                  <p className="text-brand-400 text-xs uppercase tracking-wide font-bold mt-0.5">{t.role}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
@@ -71,10 +71,10 @@ const Testimonials: React.FC<TestimonialsProps> = ({ onNavigate }) => {
           <div className="text-center">
             <button 
               onClick={() => onNavigate('work')}
-              className="inline-flex items-center text-white border-b border-stone-600 pb-1 hover:text-brand-500 hover:border-brand-500 transition-colors"
+              className="group inline-flex items-center gap-2 bg-stone-800 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-stone-900"
             >
-              See more student work in our gallery
-              <ChevronRight className="h-4 w-4 ml-2" />
+              View Student Gallery
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </button>
           </div>
         )}
