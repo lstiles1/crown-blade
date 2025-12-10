@@ -35,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
               </span>
-              <span className="text-sm font-bold tracking-wide uppercase text-stone-100">Enrollment Open: Fall 2024</span>
+              <span className="text-sm font-bold tracking-wide uppercase text-stone-100">Enrollment Open: Fall 2025</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-white leading-[1.1]">
