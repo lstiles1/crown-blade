@@ -99,7 +99,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
               className={`focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-md p-2 ${scrolled || !isHome ? 'text-stone-900 hover:bg-stone-100' : 'text-white hover:bg-white/10'} transition-colors`}
               aria-label={isOpen ? "Close main menu" : "Open main menu"}
               aria-expanded={isOpen}
-              aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </button>
