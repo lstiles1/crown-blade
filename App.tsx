@@ -199,6 +199,8 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      <Analytics />
     </div>
   );
 };
